@@ -1,0 +1,108 @@
+﻿<Window x:Class="MyNote3.OptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:media="clr-namespace:System.Windows.Media;assembly=PresentationCore"
+        xmlns:local="clr-namespace:MyNote3"
+        mc:Ignorable="d"
+        Title="Options" Height="220" Width="300" WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        x:Name="OWindow">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="30" CornerRadius="5" GlassFrameThickness="0,0,0,1" ResizeBorderThickness="4"/>
+    </WindowChrome.WindowChrome>
+    <Window.Resources>
+        
+        <DataTemplate x:Key="SkinDataTemplate">
+            <Rectangle Fill="{Binding PreviewBrush}" ToolTip="{Binding Name}" Height="20" Width="20"/>
+        </DataTemplate>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Background="{DynamicResource Skin.MainColor}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Options" FontFamily="{StaticResource UIFont}" FontSize="19" Grid.Column="1" VerticalAlignment="Center" Foreground="AliceBlue"/>
+            <Button Grid.Column="3" Style="{StaticResource HeadButtonStyle}" Width="40" Content="&#xe608;" IsCancel="True" 
+                    Command="{Binding CloseDlgCommand}" CommandParameter="{Binding ElementName=OWindow}"
+                    WindowChrome.IsHitTestVisibleInChrome="True"/>
+        </Grid>
+        <Grid Grid.Row="1" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="0.75*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="ListFont" Grid.Column="1" Style="{StaticResource UIText}"/>
+            <ComboBox Grid.Column="3" Height="20" ItemsSource="{x:Static Fonts.SystemFontFamilies}" DisplayMemberPath="Source" SelectedValuePath="Source" 
+                      SelectedItem="{Binding Source={x:Static local:Settings.Default},Path=ListFontName, Converter={StaticResource StringToFontFConvert}}"/>
+            <TextBlock Text="Size" Grid.Column="5" Style="{StaticResource UIText}"/>
+            <TextBox Grid.Column="7" Height="20">
+                <TextBox.Text>
+                    <Binding Source="{x:Static local:Settings.Default}" Path="ListFontSize">
+                        <Binding.ValidationRules>
+                            <local:FontSizeValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBlock Text="TextFont" Grid.Row="1" Grid.Column="1" Style="{StaticResource UIText}"/>
+            <ComboBox Grid.Column="3" Grid.Row="1" Height="20" ItemsSource="{x:Static Fonts.SystemFontFamilies}" DisplayMemberPath="Source" SelectedValuePath="Source"
+                      SelectedItem="{Binding Source={x:Static local:Settings.Default},Path=TextFontName, Converter={StaticResource StringToFontFConvert}}"/>
+            <TextBlock Text="Size" Grid.Row="1" Grid.Column="5" Style="{StaticResource UIText}"/>
+            <TextBox Grid.Column="7" Grid.Row="1" Height="20">
+                <TextBox.Text>
+                    <Binding Source="{x:Static local:Settings.Default}" Path="TextFontSize">
+                        <Binding.ValidationRules>
+                            <local:FontSizeValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <GroupBox Header="Skin" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7" FontFamily="{StaticResource UIFont}" FontSize="18">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <CheckBox Style="{StaticResource RadioButtonStyle}" ContentTemplate="{StaticResource SkinDataTemplate}" 
+                                 Content="{Binding SkinList[0]}" IsChecked="{Binding SkinList[0].Selected, UpdateSourceTrigger=PropertyChanged}"/>
+                    <CheckBox Style="{StaticResource RadioButtonStyle}" ContentTemplate="{StaticResource SkinDataTemplate}" 
+                                 Content="{Binding SkinList[1]}" IsChecked="{Binding SkinList[1].Selected, UpdateSourceTrigger=PropertyChanged}"/>
+                    <CheckBox Style="{StaticResource RadioButtonStyle}" ContentTemplate="{StaticResource SkinDataTemplate}" 
+                                 Content="{Binding SkinList[2]}" IsChecked="{Binding SkinList[2].Selected, UpdateSourceTrigger=PropertyChanged}"/>
+                    <CheckBox Style="{StaticResource RadioButtonStyle}" ContentTemplate="{StaticResource SkinDataTemplate}" 
+                                 Content="{Binding SkinList[3]}" IsChecked="{Binding SkinList[3].Selected, UpdateSourceTrigger=PropertyChanged}"/>
+                    <CheckBox Style="{StaticResource RadioButtonStyle}" ContentTemplate="{StaticResource SkinDataTemplate}" 
+                                 Content="{Binding SkinList[4]}" IsChecked="{Binding SkinList[4].Selected, UpdateSourceTrigger=PropertyChanged}"/>
+                    <CheckBox Style="{StaticResource RadioButtonStyle}" ContentTemplate="{StaticResource SkinDataTemplate}" 
+                                 Content="{Binding SkinList[5]}" IsChecked="{Binding SkinList[5].Selected, UpdateSourceTrigger=PropertyChanged}"/>
+                    <CheckBox Style="{StaticResource RadioButtonStyle}" ContentTemplate="{StaticResource SkinDataTemplate}" 
+                                 Content="{Binding SkinList[6]}" IsChecked="{Binding SkinList[6].Selected, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </GroupBox>
+            <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="7" Text="Version 1.0.0  By Hotran L.(oksh)" Foreground="SlateGray"
+                       FontFamily="Calibri Light" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14"/>
+
+
+
+        </Grid>
+        
+
+    </Grid>
+</Window>

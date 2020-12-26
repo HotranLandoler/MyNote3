@@ -1,0 +1,35 @@
+﻿<Window x:Class="MyNote3.ConfirmDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyNote3"
+        mc:Ignorable="d" 
+        x:Name="CWindow"
+        Title="ConfirmDialog" Height="110" Width="200" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="1" CaptionHeight="30"/>
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Background="{DynamicResource Skin.MainColor}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Confirm Delete" FontFamily="{StaticResource UIFont}" FontSize="19" Grid.Column="1" VerticalAlignment="Center" Foreground="AliceBlue"/>
+        </Grid>
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Delete" Style="{StaticResource ButtonStyle}" Content="Delete" Height="35" Click="DeleteButton_Click"/>
+            <Button x:Name="Cancel" Style="{StaticResource ButtonStyle}" Content="Cancel" Height="35" Grid.Column="2" IsCancel="True" Click="Cancel_Click"/>
+        </Grid>
+    </Grid>
+</Window>

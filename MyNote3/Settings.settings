@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MyNote3" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ListFontName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Microsoft YaHei</Value>
+    </Setting>
+    <Setting Name="ListFontSize" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">14</Value>
+    </Setting>
+    <Setting Name="TextFontName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Microsoft YaHei</Value>
+    </Setting>
+    <Setting Name="TextFontSize" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">16</Value>
+    </Setting>
+    <Setting Name="SkinName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Blue</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

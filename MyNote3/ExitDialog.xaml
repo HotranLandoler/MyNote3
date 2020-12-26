@@ -1,0 +1,49 @@
+﻿<Window x:Class="MyNote3.ExitDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyNote3"
+        mc:Ignorable="d"
+        x:Name="EWindow"
+        Title="ExitDialog" Height="220" Width="270" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="1" CaptionHeight="30"/>
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Background="{DynamicResource Skin.MainColor}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Warning" FontFamily="{StaticResource UIFont}" FontSize="19" Grid.Column="1" VerticalAlignment="Center" Foreground="AliceBlue"/>
+        </Grid>
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="One or more notes not saved." Grid.ColumnSpan="5" Style="{StaticResource UIText}"/>
+            <Button Style="{StaticResource ButtonStyle}" Content="Save All" Height="35" Grid.Row="1" IsDefault="True"
+                    Command="{Binding SaveAllCommand}" CommandParameter="{Binding ElementName=EWindow}"/>
+            <Button Style="{StaticResource ButtonStyle}" FontSize="15" Content="Don't Save" Height="35" Grid.Row="1" Grid.Column="2"
+                    Command="{Binding ExitCommand}" CommandParameter="{Binding ElementName=EWindow}"/>
+            <Button Style="{StaticResource ButtonStyle}" FontSize="15" Content="Cancel" Height="35" Grid.Row="1" Grid.Column="4" IsCancel="True"
+                    Command="{Binding CloseDlgCommand}" CommandParameter="{Binding ElementName=EWindow}"/>
+            <ListBox Grid.Row="3" Grid.ColumnSpan="5" ItemsSource="{Binding UnsavedNotes, Mode=OneTime}" DisplayMemberPath="Title"/>
+        </Grid>
+    </Grid>
+</Window>

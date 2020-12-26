@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MyNote3.Skins">
+    <SolidColorBrush x:Key="Skin.MainColor" Color="#e97171"/>
+    <SolidColorBrush x:Key="Skin.LightColor" Color="#FFFB9595"/>
+    <SolidColorBrush x:Key="Skin.DarkColor" Color="#FFFDBCBC"/>
+</ResourceDictionary>
