@@ -59,8 +59,21 @@
             </Grid.ColumnDefinitions>
 
             <ListBox x:Name="NotesListBox" Style="{DynamicResource ListBoxStyle}" Grid.RowSpan="2"
-                     ItemsSource="{Binding NoteList}" DisplayMemberPath="Title" SelectedValuePath="Title"
+                     ItemsSource="{Binding NoteList}" SelectedValuePath="Title"
                      SelectedIndex="{Binding SelectedIndex}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Path=Title}" VerticalAlignment="Center"/>
+                            <TextBlock Text="&#xe605;" FontFamily="{DynamicResource IconFont}" Foreground="PaleVioletRed"  FontSize="20" VerticalAlignment="Center"
+                           Visibility="{Binding Path=ContentChanged, Converter={StaticResource BoolToVisibility}}" Grid.Column="1"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
                 <ListBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Rename" Command="{Binding RenameCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu},Path=PlacementTarget.SelectedItem}"/>
@@ -71,7 +84,7 @@
             <StackPanel Orientation="Horizontal" Grid.Column="2">
                 <TextBlock  Text="{Binding ElementName=NotesListBox, Path=SelectedValue}" VerticalAlignment="Center"
                        FontFamily="Microsoft YaHei UI Light" FontSize="20" Foreground="DarkSlateGray"/>
-                <TextBlock Text="&#xe605;" FontFamily="{DynamicResource IconFont}" Foreground="PaleVioletRed"  FontSize="28" VerticalAlignment="Center" 
+                <TextBlock Text="&#xe605;" FontFamily="{DynamicResource IconFont}" Foreground="PaleVioletRed"  FontSize="24" VerticalAlignment="Center"
                            Visibility="{Binding ElementName=NotesListBox, Path=SelectedItem.ContentChanged, Converter={StaticResource BoolToVisibility}}"/>
             </StackPanel>
 

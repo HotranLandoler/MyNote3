@@ -96,7 +96,7 @@
                                  Content="{Binding SkinList[6]}" IsChecked="{Binding SkinList[6].Selected, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </GroupBox>
-            <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="7" Text="Version 1.0.0  By Hotran L.(oksh)" Foreground="SlateGray"
+            <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="7" Text="Version 1.0.1  By Hotran L.(oksh)" Foreground="SlateGray"
                        FontFamily="Calibri Light" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14"/>
 
 

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<update>
+  <version>1.0.1</version>
+  <new>在列表项上显示未保存提示</new>
+  <new>txt文件后缀名更改为.note</new>
+  <fixed>退出时未保存列表不再可选中了</fixed>
+</update>

@@ -15,7 +15,7 @@ namespace MyNote3.Services
     /// </summary>
     class TXTDataService : IDataService<Note>
     {
-        private readonly string ext = ".txt";
+        private readonly string ext = ".note";
         private string _sourceDirectory;
 
         public ObservableCollection<Note> GetData()
@@ -25,7 +25,7 @@ namespace MyNote3.Services
             Directory.CreateDirectory(_sourceDirectory);
             try
             {
-                var txtFiles = Directory.EnumerateFiles(_sourceDirectory, "*.txt", SearchOption.TopDirectoryOnly);
+                var txtFiles = Directory.EnumerateFiles(_sourceDirectory, "*"+ext, SearchOption.TopDirectoryOnly);
                 foreach (var txtFile in txtFiles)
                 {
                     Note note = new Note(txtFile);

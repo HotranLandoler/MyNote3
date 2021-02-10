@@ -43,7 +43,8 @@
                     Command="{Binding ExitCommand}" CommandParameter="{Binding ElementName=EWindow}"/>
             <Button Style="{StaticResource ButtonStyle}" FontSize="15" Content="Cancel" Height="35" Grid.Row="1" Grid.Column="4" IsCancel="True"
                     Command="{Binding CloseDlgCommand}" CommandParameter="{Binding ElementName=EWindow}"/>
-            <ListBox Grid.Row="3" Grid.ColumnSpan="5" ItemsSource="{Binding UnsavedNotes, Mode=OneTime}" DisplayMemberPath="Title"/>
+            <ListBox Grid.Row="3" Grid.ColumnSpan="5" ItemsSource="{Binding UnsavedNotes, Mode=OneTime}" DisplayMemberPath="Title"
+                     ItemContainerStyle="{StaticResource ExitListStyle}"/>
         </Grid>
     </Grid>
 </Window>
